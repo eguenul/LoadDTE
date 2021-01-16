@@ -1,0 +1,63 @@
+{
+"emisor":{
+  "rutemisor":"77050405-8",
+  "rsemisor":"RECFIN SPA",
+  "giroemisor":"SERVICIOS FINANCIEROS",
+  "actecoemisor":"669903",
+  "diremisor":"NUEVA TAJAMAR 183 - PISO 9",
+  "cmnaemisor":"LAS CONDES",
+  "ciuemisor":"SANTIAGO",
+  "fecharesol":"2020-11-11",
+  "numresol":"0",
+  "codsiisucur":"1",    
+  "rutenvia":"13900614-3" 
+},   
+"receptor":{
+  "rutreceptor":"77813960-K",
+  "rsreceptor":"amulen consultores ltda",
+  "giroreceptor":"ASESORIA TRIBUTARIA",
+  "dirreceptor":"URMENETA 305 OFIC 512",
+  "cmnareceptor":"puerto montt",
+  "ciureceptor":"puerto montt"
+},
+"iddoc" : {
+      "tipodte" : "33",
+      "numdte": "54",
+      "fechaemision":"2021-01-12"   
+    },  
+"referencia":{
+                  "codref":"0",
+                  "razonref":"DOCUMENTO DE PRUEBAS",
+                  "numref":"1", 
+                  "TpoDocRef":"801",
+                  "folioref":"1",
+                  "fecharef":"2019-07-18"
+},
+"totales":{  
+    "montoafecto":"750000",
+    "montoexento":"0",
+    "montoiva":"142500",
+    "tasaiva":"19", 
+    "montototal":"892500"  
+},
+  "detalle":[
+          {
+            "nrolinea" : "1",
+            "tpocodigo" : "INT",
+            "vlrcodigo" : "3333",
+            "nmbitem":"CESION DE FACTURAS",
+            "qtyitem":"1",
+            "prcitem":"500000",
+            "montoitem":"500000" 
+          },
+          {
+            "nrolinea" : "2",
+            "tpocodigo" : "INT",
+            "vlrcodigo" : "23233",
+            "nmbitem":"SERVICIOS DE FACTORING",
+            "qtyitem":"1",
+            "prcitem":"250000",
+            "montoitem":"250000"  
+          }
+        ]
+}

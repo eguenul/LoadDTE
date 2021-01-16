@@ -1,0 +1,36 @@
+{
+   "rutcedente":"77050405-8",
+   "rutcesionario":"76040308-3",
+   "cesiones":[
+      {
+         "cedente":{
+            "rut":"76040308-3",
+            "razonsocial":"EGGA INFORMATICOA E.I.R.L",
+            "direccion":"URMENETA 305 OFICINA 513 - PUERTO MONTT",
+            "email":"eguenul@yahoo.com",
+            "rutautorizado":{
+               "rut":"13968481-8",
+               "nombre":"ESTEBAN GUENUL ALMONACID"
+            }
+         },
+         "cesionario":{
+            "rut":"7485497-4",
+            "razonsocial":"JOSE OMAR GUENUL VELASQUEZ",
+            "direccion":"URMENETA 305 OFIC 514 - PUERTO MONTT",
+            "email":"eguenul@amulen.cl"
+         },
+           "iddte":{
+            "tipodte":"33",
+            "rutemisor":"77050405-8",
+            "folio":"54",
+            "fchemis":"2021-01-12",
+            "mnttotal":"892500",
+            "rutreceptor":"77813960-K"
+           
+         },
+         "ultimovencimiento":"2021-01-12",
+         "montocesion":"892500"
+       
+      }
+   ]
+}
