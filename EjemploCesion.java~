@@ -170,8 +170,6 @@ public static void main(String[] args) throws FileNotFoundException, IOException
          /* parametros de rut de empresa cedente */ 
          MainCesion objMainCesion = new MainCesion("paola", "Coval2020", secuencia, "77050405-8",arrayCert);
        
-	/* STRING JSON DE LA NUEVA CESION, ARRAY BYTE DEL AEC ANTERIOR, RUT EMPRESA CEDENTE, CORREO. EL PARAMETRO AEC SE MANTIENE PARA ESTABLECER QUE ES UN ARCHIVO EXTERNO */	
-
          Object[] arrayObjetos =   objMainCesion.sendCesion(stringJSON, arrayAEC, "77050405-8", "eguenul@yahoo.com", "AEC");
         
           

@@ -32,6 +32,7 @@ import com.appdte.sii.cl.Token;
 import com.appdte.sii.cl.UploadCesion;
 import com.appdte.sii.utilidades.ConfigClass;
 import com.appdte.sii.utilidades.getBytesAEC;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
@@ -73,14 +74,20 @@ public class MainCesion {
         
     
 }
-    public Object[] sendCesion(String stringjson, String pathupload,  String rutcedente, String email, String tipocesion) throws ParserConfigurationException, TransformerException, TransformerConfigurationException, IOException, FileNotFoundException, SAXException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyStoreException, CertificateException, UnrecoverableEntryException, UnrecoverableKeyException, KeyException, MarshalException, XMLSignatureException, Exception{
+    public Object[] sendCesion(String stringjson, byte[] arrayAEC,  String rutcedente, String email, String tipocesion) throws ParserConfigurationException, TransformerException, TransformerConfigurationException, IOException, FileNotFoundException, SAXException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyStoreException, CertificateException, UnrecoverableEntryException, UnrecoverableKeyException, KeyException, MarshalException, XMLSignatureException, Exception{
      /* cargo parametros de configuracion */
-   ConfigClass objconfiguracion = new ConfigClass();
+ 
+     String pathupload = this.loginuser + "AEC" + ".xml";
+     File file = new File(pathupload); 
+     OutputStream os  = new FileOutputStream(file); 
+     os.write((byte[]) arrayAEC);
+     
+     ConfigClass objconfiguracion = new ConfigClass();
    
    String certificado = this.loginuser;
    String pathcertificado = certificado;
    /* CARGO LOS PARAMETROS DE CONFIGURACION */
-   String pathdte = "";
+ 
    String urlenvironment = objconfiguracion.getPathenvironment();       
                 
         
@@ -163,9 +170,26 @@ getBytesAEC objByte = new getBytesAEC();
 arrayObjetos[0]=valortrackid;
 arrayObjetos[1]= objByte.getBytesArray(nombreaec);
 
+
+/* elimino el archivo temporal del disco */
+ if (file.delete()){
+   System.out.println("El fichero ha sido borrado satisfactoriamente");
+ }
+ else{
+   System.out.println("El fichero no puede ser borrado");
+   
+   
+  }
+
+
+
+
+
+
+
 return arrayObjetos;
 
-  
+ 
 }
     
       
