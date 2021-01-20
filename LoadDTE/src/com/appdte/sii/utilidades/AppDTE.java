@@ -101,9 +101,12 @@ public class AppDTE {
     
     FuncionesCAF objFuncionCAF = new FuncionesCAF();
     
+    /* VALIDAMOS CAF */
+    if(objFuncionCAF.validaCAF(pathcaf, objemisor.getRutemisor(),Integer.parseInt(iddoc.getTipoDTE()), Integer.parseInt(iddoc.getNumDTE()))==false){
     
-    if(objFuncionCAF.validaCAF(pathcaf, objemisor.getRutemisor(),Integer.parseInt(iddoc.getTipoDTE()), Integer.parseInt(iddoc.getNumDTE()))==true){
-    
+        return null;
+        
+    }
     
     
     objdte.setFechadte(iddoc.getFechaEmision());
@@ -251,11 +254,7 @@ String valorsemilla =  objsemilla.getSeed(urlenvironment);
  arrayObjetos[1] = objByte.getBytesArray(nombredte);
     
  return arrayObjetos;
-    }else{
-        
-   return null;
-        
-    }
+    
  
  
  
