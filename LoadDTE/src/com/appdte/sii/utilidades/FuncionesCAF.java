@@ -19,13 +19,10 @@ import org.xml.sax.SAXException;
  */
 public class FuncionesCAF {
     
-    ;
-   public boolean validaCAF( String rutempresa, int codsii, int nrofolio) throws ParserConfigurationException, SAXException, IOException{
-     
-      ConfigClass objconfig = new ConfigClass();
-       String pathcaf = objconfig.getPathcaf();
-       String[] arrayrutempresa = rutempresa.split("-"); 
-       String filepath =  pathcaf+"F"+arrayrutempresa[0].trim()+"T"+String.valueOf(codsii)+".xml";
+    
+   public boolean validaCAF(String pathcaf, String rutempresa, int codsii, int nrofolio) throws ParserConfigurationException, SAXException, IOException{   
+        String[] arrayrutempresa = rutempresa.split("-"); 
+        String filepath =  pathcaf;
 	
          DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	 DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

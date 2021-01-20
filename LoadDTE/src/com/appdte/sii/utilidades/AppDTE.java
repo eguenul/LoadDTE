@@ -80,6 +80,11 @@ public class AppDTE {
      
      /* DATOS DEL EMISOR EN JSON */
      EmisorJson objemisor = objdtejson.getEmisor();
+     
+     
+     
+     
+     
     /* DATOS DEL RECEPTOR EN JSON */
     ReceptorJson objreceptor = objdtejson.getReceptor();
     IdDteJson iddoc = objdtejson.getIdDte();
@@ -93,6 +98,14 @@ public class AppDTE {
     objdte.setRutemisor(objemisor.getRutemisor());
     objdte.setTipodte(iddoc.getTipoDTE());
     objdte.setNumdte(iddoc.getNumDTE());
+    
+    FuncionesCAF objFuncionCAF = new FuncionesCAF();
+    
+    
+    if(objFuncionCAF.validaCAF(pathcaf, objemisor.getRutemisor(),Integer.parseInt(iddoc.getTipoDTE()), Integer.parseInt(iddoc.getNumDTE()))==true){
+    
+    
+    
     objdte.setFechadte(iddoc.getFechaEmision());
     
     if(Integer.parseInt(iddoc.getTipoDTE())==52){
@@ -229,13 +242,23 @@ String valorsemilla =  objsemilla.getSeed(urlenvironment);
 
  String valortrackid = objupload.uploadSii(valortoken,"",nombredte,objdte.getRutemisor(),rutEnvia);
 
+    
+ 
  getBytesDTE objByte = new getBytesDTE();
  Object[] arrayObjetos = new Object[2];
 
  arrayObjetos[0] = valortrackid;
  arrayObjetos[1] = objByte.getBytesArray(nombredte);
- 
+    
  return arrayObjetos;
+    }else{
+        
+   return null;
+        
+    }
+ 
+ 
+ 
 }
    
 
