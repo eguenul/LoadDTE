@@ -7,7 +7,7 @@ package com.appdte.sii.funcionesws;
 
 import com.appdte.sii.cl.Semilla;
 import com.appdte.sii.cl.Token;
-import com.appdte.sii.utilidades.ConfigClass;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -44,17 +44,17 @@ private String MontoDte;
            
 
 
-public String getEstDte(String login, String clave) throws ParserConfigurationException, SAXException, IOException, Exception{
+public String getEstDte(String login, String clave, String environment) throws ParserConfigurationException, SAXException, IOException, Exception{
         
        
- ConfigClass objconfig = new ConfigClass();
- String pathcertificado = objconfig.getPathcert()+login;
+
+ String pathcertificado = login;
   
  Semilla objsemilla = new Semilla();
  String valorsemilla = new String(); 
- valorsemilla =  objsemilla.getSeed(objconfig.getPathenvironment());
+ valorsemilla =  objsemilla.getSeed(environment);
  
- Token objtoken = new Token(objconfig.getPathenvironment());
+ Token objtoken = new Token(environment);
  String valortoken =  objtoken.getToken(valorsemilla,pathcertificado,clave,"");
 
  
@@ -65,7 +65,7 @@ public String getEstDte(String login, String clave) throws ParserConfigurationEx
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\""+"\n"+
         "SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"+"\n"+
         "<SOAP-ENV:Body>"+"\n"+
-        "<m:getEstDte xmlns:m=\"https://"+objconfig.getPathenvironment()+"/DTEWS/QueryEstDte.jws\">"+"\n"+
+        "<m:getEstDte xmlns:m=\"https://"+environment+"/DTEWS/QueryEstDte.jws\">"+"\n"+
         
           "<RutConsultante>"+
           getRutConsultante().trim()+
@@ -127,7 +127,7 @@ public String getEstDte(String login, String clave) throws ParserConfigurationEx
         
  System.out.print(stringconsulta);
         
-String direccion = "https://"+objconfig.getPathenvironment()+"/DTEWS/QueryEstDte.jws?WSDL";
+String direccion = "https://"+environment+"/DTEWS/QueryEstDte.jws?WSDL";
 URL url = new URL (direccion);
 HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
    

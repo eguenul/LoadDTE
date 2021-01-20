@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.appdte.sii.cl;
-import com.appdte.sii.utilidades.ConfigClass;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -51,7 +51,7 @@ public class Token {
         String valuesemilla = Long.toString(cadenaResultadoInt);
           
         
-            ConfigClass objconfig = new ConfigClass();
+       
           
         
        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -108,7 +108,7 @@ public class Token {
     public String requestToken(StringWriter writer, String urlauth) throws IOException, FileNotFoundException, ParserConfigurationException, SAXException{
         
          String contenidosemilla = "";
-             ConfigClass objconfig = new ConfigClass();
+           
           
          
        contenidosemilla = contenidosemilla + writer.toString() + "\n" ;

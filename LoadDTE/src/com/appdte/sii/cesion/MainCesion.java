@@ -30,7 +30,7 @@ import com.appdte.json.CesionJson;
 import com.appdte.sii.cl.Semilla;
 import com.appdte.sii.cl.Token;
 import com.appdte.sii.cl.UploadCesion;
-import com.appdte.sii.utilidades.ConfigClass;
+
 import com.appdte.sii.utilidades.getBytesAEC;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,7 +51,8 @@ public class MainCesion {
     private final String clave;
     private final String empresarut;
     private final String nombreaec;
-    public MainCesion(String loginuser, String clave, int correlativo, String empresarut, byte[] arrayCert) throws FileNotFoundException, IOException{
+    private final String environment;
+    public MainCesion(String loginuser, String clave, int correlativo, String empresarut, byte[] arrayCert, String environment) throws FileNotFoundException, IOException{
        
         
         
@@ -60,7 +61,7 @@ public class MainCesion {
         
         
         
-        
+        this.environment = environment;
         
         this.loginuser = loginuser;
         this.clave = clave;
@@ -70,25 +71,25 @@ public class MainCesion {
         
         
         String[]  arrayempresarut = this.empresarut.split("-");
-         this.nombreaec = "AEC"+arrayempresarut[0]+"F"+String.valueOf(correlativo);
+        this.nombreaec = "AEC"+arrayempresarut[0]+"F"+String.valueOf(correlativo);
         
     
 }
     public Object[] sendCesion(String stringjson, byte[] arrayAEC,  String rutcedente, String email, String tipocesion) throws ParserConfigurationException, TransformerException, TransformerConfigurationException, IOException, FileNotFoundException, SAXException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyStoreException, CertificateException, UnrecoverableEntryException, UnrecoverableKeyException, KeyException, MarshalException, XMLSignatureException, Exception{
      /* cargo parametros de configuracion */
  
-     String pathupload = this.loginuser + "AEC" + ".xml";
+     String pathupload = this.nombreaec+".xml";
      File file = new File(pathupload); 
      OutputStream os  = new FileOutputStream(file); 
      os.write((byte[]) arrayAEC);
      
-     ConfigClass objconfiguracion = new ConfigClass();
+ 
    
    String certificado = this.loginuser;
    String pathcertificado = certificado;
    /* CARGO LOS PARAMETROS DE CONFIGURACION */
  
-   String urlenvironment = objconfiguracion.getPathenvironment();       
+   String urlenvironment = this.environment;       
                 
         
         

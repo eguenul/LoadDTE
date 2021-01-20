@@ -1,6 +1,5 @@
 package com.appdte.sii.cl;
 
-import com.appdte.sii.utilidades.ConfigClass;
 import java.io.FileInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -92,7 +91,7 @@ public class SignToken {
         
         /* INSTANCIO EL DOCUMENTO A FIRMAR */
         
-        ConfigClass objconfig = new ConfigClass();
+       
 // Instantiate the document to be signed.
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);

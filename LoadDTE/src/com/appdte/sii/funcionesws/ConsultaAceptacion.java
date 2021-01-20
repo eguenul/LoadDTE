@@ -7,7 +7,7 @@ package com.appdte.sii.funcionesws;
 
 import com.appdte.sii.cl.Semilla;
 import com.appdte.sii.cl.Token;
-import com.appdte.sii.utilidades.ConfigClass;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -35,21 +35,21 @@ public class ConsultaAceptacion {
  private String tipoDoc;
  private String folio;
      
-public String  consultarDocDteCedible(String login, String clave) throws ParserConfigurationException, SAXException, IOException, Exception{    
-ConfigClass objconfig = new ConfigClass();
-
-String ambiente = "https://"+ objconfig.getServeracceptdte() +"/WSREGISTRORECLAMODTECERT/registroreclamodteservice";
+public String  consultarDocDteCedible(String login, String clave, String environment, String environmentacceptdte) throws ParserConfigurationException, SAXException, IOException, Exception{    
 
 
+String ambiente = "https://"+ environmentacceptdte +"/WSREGISTRORECLAMODTECERT/registroreclamodteservice";
 
 
- String pathcertificado = objconfig.getPathcert()+login;
+
+
+ String pathcertificado = login;
   
  Semilla objsemilla = new Semilla();
  String valorsemilla = new String(); 
- valorsemilla =  objsemilla.getSeed(objconfig.getServerauth());
+ valorsemilla =  objsemilla.getSeed(environmentacceptdte);
  
- Token objtoken = new Token(objconfig.getServerauth());
+ Token objtoken = new Token(environmentacceptdte);
  String valortoken =  objtoken.getToken(valorsemilla,pathcertificado,clave,"");
 
  

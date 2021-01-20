@@ -31,8 +31,14 @@ import org.xml.sax.SAXException;
 public class EnvioDTE {
 
     private Document doc;
+    private final String environment;
 
-
+    public EnvioDTE(String environment){
+       this.environment = environment;
+       
+    }
+           
+    
 
    public void generaEnvio(DteModel objdte,String nombredte,String pathdte,String rutusuario) throws ParserConfigurationException, FileNotFoundException, IOException, SAXException, TransformerConfigurationException, TransformerException{
        
@@ -67,8 +73,8 @@ public class EnvioDTE {
         
         Element rutreceptor = this.doc.createElement("RutReceptor");
         
-        ConfigClass objconfig = new ConfigClass();
-      if("maullin.sii.cl".equals(objconfig.getPathenvironment())){
+        
+      if("maullin.sii.cl".equals(this.environment)){
         rutreceptor.setTextContent("60803000-K");
       }else{
           rutreceptor.setTextContent(objdte.getRutreceptor().trim());

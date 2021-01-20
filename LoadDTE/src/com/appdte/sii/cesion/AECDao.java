@@ -22,7 +22,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import com.appdte.json.AECjson;
-import com.appdte.sii.utilidades.ConfigClass;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -340,7 +340,7 @@ public class AECDao {
     
     
     public void crearXML(String nombreaec) throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException{
-        ConfigClass objconfig = new ConfigClass();
+ 
         
           TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();     
@@ -357,8 +357,8 @@ public class AECDao {
     
     public void signAEC(String login, String clave, String nombreaec) throws ParserConfigurationException, SAXException, IOException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, MarshalException, XMLSignatureException, TransformerConfigurationException, TransformerException, KeyException, KeyStoreException, CertificateException, UnrecoverableEntryException{
     
-       ConfigClass objconfig = new ConfigClass();
-     String  pathcertificado = objconfig.getPathcert()+login;
+      
+     String  pathcertificado = login;
                   
          /* CREO LOS ELEMENTOS DE FIRMA */     
             // Create a DOM XMLSignatureFactory that will be used to

@@ -27,21 +27,40 @@ import appventas.movimientos.BlobDTE;
 import com.google.gson.Gson;
 import java.util.List;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 
 public class AppDTE {
+    String environment;
+    String pathcaf;
+    public AppDTE(byte[] arrayCAF, String loginuser, String environment) throws FileNotFoundException, IOException{
+        
+     this.environment = environment;
+     File file = new File(loginuser+ "CAF"+".xml"); 
+     OutputStream os  = new FileOutputStream(file); 
+     os.write(arrayCAF);
+     this.pathcaf = loginuser+ "CAF"+".xml";
+     
+    }
+            
+            
+    
+    
     
     @SuppressWarnings("empty-statement")
     
     public  Object[] sendDTE(String stringDTE,String certificado,String clave,String rutEnvia, boolean blReferencia, byte[] arrayCert) throws TransformerException, ParserConfigurationException, SAXException, IOException, Exception{
 
     
-   ConfigClass objconfiguracion = new ConfigClass();
-   String pathdata = objconfiguracion.getPathdata();
-   String pathcaf = objconfiguracion.getPathcaf();
+  
+   String pathdata = "";
+  
    /* CARGO LOS PARAMETROS DE CONFIGURACION */
-   String pathdte = objconfiguracion.getPathdte();
-   String urlenvironment = objconfiguracion.getPathenvironment();   
+   String pathdte = "";
+   String urlenvironment = this.environment;
    /* ingreso el DTE en formato JSON */
              
              
@@ -130,7 +149,7 @@ public class AppDTE {
      List<DetalleDteJson> detalle = objdtejson.getDetalleDteJson();
   
     
-   Timbre objTimbre = new Timbre("",nombredte,pathdata,pathcaf);
+   Timbre objTimbre = new Timbre("",nombredte,pathdata,this.pathcaf);
    String auxDescripcion;
 for (DetalleDteJson i :  detalle){     
   if(i.getNrolinea()==1){  
@@ -180,7 +199,7 @@ objFirma.signDTE("",nombredte,certificado,clave, arrayCert);
    
     /* ahora envuelvo el DTE en un sobre electrónico */
    
-EnvioDTE objenvio = new EnvioDTE();
+EnvioDTE objenvio = new EnvioDTE(this.environment);
 objenvio.generaEnvio(objdte,nombredte,pathdte,rutEnvia);
    
 SignENVDTE objFirmaENV = new SignENVDTE();
