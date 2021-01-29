@@ -5,7 +5,10 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
+import java.io.File;
+import java.io.OutputStream;
 import java.io.StringWriter;
+import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,24 +29,42 @@ import org.w3c.dom.NodeList;
 
 
 public class PrintDTE{
-    String pathdownload;
-public PrintDTE(String pathdownload){
-    this.pathdownload = pathdownload;
+ 
+public PrintDTE(){
+   
     
 }
     
-    public  void printDTE(String rutemisor,String foliodte, String tipodte) throws Exception {
+    public byte[] printDTE(String login, byte[] arrayDTE,byte[] arrayTemplate, String rutemisor,String foliodte, String codsii) throws Exception {
 
         
-       ConfigClass objconfig = new ConfigClass();
+      
        String auxrutemisor = rutemisor;
        
        String[] arrayrutemisor = rutemisor.split("-");
        rutemisor = arrayrutemisor[0];
-       String nombredte = "ENVDTE"+rutemisor.trim()+"F"+foliodte+"T"+tipodte;
+       String nombredte = "ENVDTE"+rutemisor.trim()+"F"+foliodte+"T"+codsii;
+       
+       /* creo el DTE XML para imprimir por medio del array bytes del dte */
+         File file = new File(nombredte+".xml"); 
+         OutputStream os  = new FileOutputStream(file); 
+         os.write(arrayDTE);
+         
+         
+         File file2 = new File(login+"template"+".pdf"); 
+         OutputStream os2  = new FileOutputStream(file2); 
+         os2.write(arrayTemplate);
+         
+         
+         
+         
+       
+       
+       
+       
         
         /* apunto donde está el xml */
-        String filepath = this.pathdownload.trim()+nombredte.trim()+".xml";
+        String filepath = nombredte.trim()+".xml";
 	DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 System.out.print(filepath);
@@ -130,8 +151,8 @@ System.out.print(filepath);
         
         Node RznSoc = doc.getElementsByTagName("RznSoc").item(0);
         /* cargo el template pdf */
-        PdfReader reader = new PdfReader(objconfig.getPathtemplate()+"template.pdf");
-        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(pathdownload+"/"+nombredte+".pdf"));
+        PdfReader reader = new PdfReader(login+"template.pdf");
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(nombredte+".pdf"));
         PdfContentByte content = stamper.getOverContent(1);
         BaseFont bf=BaseFont.createFont(BaseFont.HELVETICA,BaseFont.CP1252,BaseFont.NOT_EMBEDDED);
         BaseFont bf2=BaseFont.createFont(BaseFont.HELVETICA_BOLD,BaseFont.CP1252,BaseFont.NOT_EMBEDDED);
@@ -143,7 +164,7 @@ System.out.print(filepath);
        int y1 = 720;
         content.setTextMatrix(410, y1);
       
-         switch(tipodte){
+         switch(codsii){
             
             case "33":
                        content.showText("FACTURA ELECTRONICA");
@@ -410,6 +431,12 @@ if ("0".equals(folioref.getTextContent().trim())==false){
      
         
         
+        
+      File filepdf = new File("ENV"+nombredte+".pdf");
+      byte[] arrayPDF = Files.readAllBytes(filepdf.toPath());
+        
+        
+        return arrayPDF;
     }
     
     

@@ -41,7 +41,7 @@ public class UploadCesion {
         
     }
     
-    public String sendCesion(String valortoken,String nombreAEC ,String rutemisor,String email) throws MalformedURLException, IOException, ParserConfigurationException, SAXException{
+    public String[] sendCesion(String valortoken,String nombreAEC ,String rutemisor,String email) throws MalformedURLException, IOException, ParserConfigurationException, SAXException{
 
          String[] arrayrutcedente = rutemisor.split("-");
         
@@ -118,7 +118,7 @@ String targetString = "";
            
        
   
- public String readTrackId(String targetString) throws ParserConfigurationException, SAXException, IOException{
+ public String[] readTrackId(String targetString) throws ParserConfigurationException, SAXException, IOException{
           DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
           dbf.setNamespaceAware(false);
           DocumentBuilder db = dbf.newDocumentBuilder();
@@ -128,10 +128,19 @@ String targetString = "";
           NodeList nl = doc.getElementsByTagName("TRACKID");
           Element el = (Element) nl.item(0);
           String valortrackid = el.getFirstChild().getNodeValue();
+          
+          
+          NodeList nl2 = doc.getElementsByTagName("STATUS");
+          Element el2 = (Element) nl2.item(0);
+          String estadoenvioaec = el2.getFirstChild().getNodeValue();        
+          String[] arrayObjetosEstado = null;
+          
+          arrayObjetosEstado[0] = valortrackid;
+          arrayObjetosEstado[1] = estadoenvioaec;
 //          File fichero = new File(objconfig.getPathdata()+"track"+nombredte+".xml");
 //          fichero.delete();
 
-return valortrackid;
+return arrayObjetosEstado;
     
  }         
         

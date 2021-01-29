@@ -161,16 +161,18 @@ UploadCesion objupload = new UploadCesion(urlenvironment);
  
 
 
-String valortrackid = objupload.sendCesion(valortoken, this.nombreaec, rutcedente, email);
-Object[] arrayObjetos = new Object[2];
+String[] arrayEstadoEnvioAEC = objupload.sendCesion(valortoken, this.nombreaec, rutcedente, email);
+Object[] arrayObjetos = new Object[3];
 
 getBytesAEC objByte = new getBytesAEC();
 
 
 
-arrayObjetos[0]=valortrackid;
+arrayObjetos[0]=arrayEstadoEnvioAEC[0];
 arrayObjetos[1]= objByte.getBytesArray(nombreaec);
 
+/* CAPTURO EL ESTADO DEL ENVIO */
+arrayObjetos[2]= objByte.getBytesArray(arrayEstadoEnvioAEC[1]);
 
 /* elimino el archivo temporal del disco */
  if (file.delete()){

@@ -46,10 +46,9 @@ String ambiente = "https://"+ environmentacceptdte +"/WSREGISTRORECLAMODTECERT/r
  String pathcertificado = login;
   
  Semilla objsemilla = new Semilla();
- String valorsemilla = new String(); 
- valorsemilla =  objsemilla.getSeed(environmentacceptdte);
+ String valorsemilla = objsemilla.getSeed(environment);
  
- Token objtoken = new Token(environmentacceptdte);
+ Token objtoken = new Token(environment);
  String valortoken =  objtoken.getToken(valorsemilla,pathcertificado,clave,"");
 
  
