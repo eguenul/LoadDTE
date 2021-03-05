@@ -82,7 +82,7 @@ public StringWriter creaDoc(String login,String clave, String pathupload) throws
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	        Transformer transformer = transformerFactory.newTransformer();     
               
-                transformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+                transformer.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
                 transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
               
                 transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
@@ -125,6 +125,7 @@ public StringWriter creaDoc(String login,String clave, String pathupload) throws
         
             TransformerFactory factory = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             transformer.transform(source, result);
        
@@ -160,7 +161,7 @@ public StringWriter creaDoc(String login,String clave, String pathupload) throws
            TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	    Transformer transformer2 = transformerFactory.newTransformer();     
               
-           transformer2.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+           transformer2.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
            transformer2.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
               
            

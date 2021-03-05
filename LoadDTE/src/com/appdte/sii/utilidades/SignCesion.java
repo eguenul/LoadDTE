@@ -141,7 +141,7 @@ public class SignCesion {
 
            TransformerFactory tf = TransformerFactory.newInstance();
             Transformer trans = tf.newTransformer();
-            trans.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+            trans.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
             trans.setOutputProperty(OutputKeys.METHOD, "xml");
           trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             trans.setOutputProperty(OutputKeys.INDENT, "no");

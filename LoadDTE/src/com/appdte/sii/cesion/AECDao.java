@@ -248,7 +248,7 @@ public class AECDao {
      TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	        Transformer transformer = transformerFactory.newTransformer();     
               
-                transformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+                transformer.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
                 transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
               
                 transformer.setOutputProperty(OutputKeys.INDENT, "no"); 
@@ -294,7 +294,7 @@ public class AECDao {
      TransformerFactory transformerFactory2 = TransformerFactory.newInstance();
 	        Transformer transformer2 = transformerFactory2.newTransformer();     
               
-                transformer2.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+                transformer2.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
                 transformer2.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
               
                 transformer2.setOutputProperty(OutputKeys.INDENT, "no"); 
@@ -344,7 +344,7 @@ public class AECDao {
         
           TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();     
-        transformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
     
         transformer.setOutputProperty(OutputKeys.INDENT, "no"); 
@@ -439,6 +439,9 @@ public class AECDao {
 OutputStream os = new FileOutputStream(nombreaec+".xml");
 TransformerFactory tf = TransformerFactory.newInstance();
 Transformer trans = tf.newTransformer();
+
+trans.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
+
 trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 trans.transform(new DOMSource(doc), new StreamResult(os));
 

@@ -52,6 +52,7 @@ public class MainCesion {
     private final String empresarut;
     private final String nombreaec;
     private final String environment;
+    
     public MainCesion(String loginuser, String clave, int correlativo, String empresarut, byte[] arrayCert, String environment) throws FileNotFoundException, IOException{
        
         
@@ -175,6 +176,7 @@ arrayObjetos[1]= objByte.getBytesArray(nombreaec);
 arrayObjetos[2]= objByte.getBytesArray(arrayEstadoEnvioAEC[1]);
 
 /* elimino el archivo temporal del disco */
+/*
  if (file.delete()){
    System.out.println("El fichero ha sido borrado satisfactoriamente");
  }
@@ -184,7 +186,7 @@ arrayObjetos[2]= objByte.getBytesArray(arrayEstadoEnvioAEC[1]);
    
   }
 
-
+*/
 
 
 

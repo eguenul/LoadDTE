@@ -256,7 +256,7 @@ objrutautorizado.getNombre()+
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	        Transformer transformer = transformerFactory.newTransformer();     
               
-                transformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+                transformer.setOutputProperty(OutputKeys.ENCODING, "Windows-1252");
                 transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
               
                 transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
