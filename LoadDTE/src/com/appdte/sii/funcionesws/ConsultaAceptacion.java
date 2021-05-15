@@ -11,6 +11,7 @@ import com.appdte.sii.cl.Token;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -35,11 +36,15 @@ public class ConsultaAceptacion {
  private String tipoDoc;
  private String folio;
      
-public String  consultarDocDteCedible(String login, String clave, String environment, String environmentacceptdte) throws ParserConfigurationException, SAXException, IOException, Exception{    
+public String  consultarDocDteCedible(byte[] arrayCert, String login, String clave, String environment, String environmentacceptdte) throws ParserConfigurationException, SAXException, IOException, Exception{    
 
 
 String ambiente = "https://"+ environmentacceptdte +"/WSREGISTRORECLAMODTECERT/registroreclamodteservice";
 
+try (OutputStream os = new FileOutputStream(login)) {
+            os.write(arrayCert);
+        }
+        
 
 
 

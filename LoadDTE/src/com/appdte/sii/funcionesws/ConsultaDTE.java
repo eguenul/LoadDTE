@@ -11,6 +11,7 @@ import com.appdte.sii.cl.Token;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -44,9 +45,12 @@ private String MontoDte;
            
 
 
-public String getEstDte(String login, String clave, String environment) throws ParserConfigurationException, SAXException, IOException, Exception{
+public String getEstDte(byte[] arrayCert, String login, String clave, String environment) throws ParserConfigurationException, SAXException, IOException, Exception{
         
-       
+         
+       try (OutputStream os = new FileOutputStream(login)) {
+            os.write(arrayCert);
+        }
 
  String pathcertificado = login;
   

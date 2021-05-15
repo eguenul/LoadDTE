@@ -11,6 +11,7 @@ import com.appdte.sii.cl.Token;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -40,15 +41,17 @@ public class ConsultaCesion {
     private String RutEmpresa;
     private String DVEmpresa;
 
-public String getEstEnvioCesion(String login, String clave,String trackid, String environment) throws ParserConfigurationException, SAXException, IOException, Exception{
+public String getEstEnvioCesion(byte[] arrayCert, String login, String clave,String trackid, String environment) throws ParserConfigurationException, SAXException, IOException, Exception{
         
-       
+       try (OutputStream os = new FileOutputStream(login)) {
+            os.write(arrayCert);
+        }
  
  String pathcertificado = login;
   
  Semilla objsemilla = new Semilla();
- String valorsemilla = new String(); 
- valorsemilla =  objsemilla.getSeed(environment);
+ 
+String valorsemilla =  objsemilla.getSeed(environment);
  
  Token objtoken = new Token(environment);
  String valortoken =  objtoken.getToken(valorsemilla,pathcertificado,clave,"");
