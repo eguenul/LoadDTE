@@ -14,8 +14,15 @@ private String numdte;
 private String fechaemision;
 private String tipodespacho;
 private String tipotraslado;
+private String frmapago;
 
-   
+    public String getFrmapago() {
+        return frmapago;
+    }
+
+    public void setFrmapago(String frmapago) {
+        this.frmapago = frmapago;
+    }
 
 public String getTipoDTE() {
         return tipodte;

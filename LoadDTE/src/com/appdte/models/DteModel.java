@@ -30,7 +30,7 @@ public class DteModel {
    int montoiva;
    int montototal;
    int tasaiva;
-   
+   private String frmapago;
    String fechadte;
    
    String fecharesol;
@@ -274,6 +274,14 @@ public class DteModel {
    public String getNumresol(){
        return numresol;
    }
+
+    public String getFrmapago() {
+        return frmapago;
+    }
+
+    public void setFrmapago(String frmapago) {
+        this.frmapago = frmapago;
+    }
    
     
 }

@@ -88,6 +88,7 @@ public class AppDTE {
     /* DATOS DEL RECEPTOR EN JSON */
     ReceptorJson objreceptor = objdtejson.getReceptor();
     IdDteJson iddoc = objdtejson.getIdDte();
+    
     TotalesJson totales = objdtejson.getTotales(); 
    /* inicializar el xml */        
     DteModel objdte = new DteModel();
@@ -98,7 +99,7 @@ public class AppDTE {
     objdte.setRutemisor(objemisor.getRutemisor());
     objdte.setTipodte(iddoc.getTipoDTE());
     objdte.setNumdte(iddoc.getNumDTE());
-    
+  
     FuncionesCAF objFuncionCAF = new FuncionesCAF();
     
     /* VALIDAMOS CAF */
@@ -113,6 +114,11 @@ public class AppDTE {
     
     if(Integer.parseInt(iddoc.getTipoDTE())==52){
         objdte.setTipotraslado(iddoc.getTipotraslado());
+    }
+    
+    
+    if(Integer.parseInt(iddoc.getTipoDTE())==33 || Integer.parseInt(iddoc.getTipoDTE())==34 ){
+        objdte.setFrmapago(iddoc.getFrmapago());
     }
     
     

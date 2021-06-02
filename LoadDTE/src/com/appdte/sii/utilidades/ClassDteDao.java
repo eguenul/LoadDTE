@@ -72,7 +72,11 @@ public void crearXml(DteModel encabezadodte) throws TransformerConfigurationExce
                 }
                 
                 
-                
+                 if( Integer.parseInt(tipodte.getTextContent())==33 || Integer.parseInt(tipodte.getTextContent())==34    ){
+                     Element frmapago = this.doc.createElement("FmaPago");
+                     frmapago.setTextContent(encabezadodte.getFrmapago());
+                     iddoc.appendChild(frmapago);
+                }
                 
                 
                 // agrego los datos del emisor de la fctura
