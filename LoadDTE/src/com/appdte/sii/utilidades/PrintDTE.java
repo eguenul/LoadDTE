@@ -35,25 +35,17 @@ public PrintDTE(){
     
 }
     
-    public byte[] printDTE(String login, byte[] arrayDTE,byte[] arrayTemplate, String rutemisor,String foliodte, String codsii) throws Exception {
+    public void printDTE(String rutemisor,String foliodte, String codsii) throws Exception {
 
-        
+        ConfigClass objConfig = new ConfigClass();
       
        String auxrutemisor = rutemisor;
        
        String[] arrayrutemisor = rutemisor.split("-");
        rutemisor = arrayrutemisor[0];
-       String nombredte = "ENVDTE"+rutemisor.trim()+"F"+foliodte+"T"+codsii;
+       String nombredte = objConfig.getPathdte()+"ENVDTE"+rutemisor.trim()+"F"+foliodte+"T"+codsii;
        
-       /* creo el DTE XML para imprimir por medio del array bytes del dte */
-         File file = new File(nombredte+".xml"); 
-         OutputStream os  = new FileOutputStream(file); 
-         os.write(arrayDTE);
-         
-         
-         File file2 = new File(login+"template"+".pdf"); 
-         OutputStream os2  = new FileOutputStream(file2); 
-         os2.write(arrayTemplate);
+ 
          
          
          
@@ -151,8 +143,8 @@ System.out.print(filepath);
         
         Node RznSoc = doc.getElementsByTagName("RznSoc").item(0);
         /* cargo el template pdf */
-        PdfReader reader = new PdfReader(login+"template.pdf");
-        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(nombredte+".pdf"));
+        PdfReader reader = new PdfReader(objConfig.getPathtemplate()+"template.pdf");
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(objConfig.getPathpdf()+"ENVDTE"+rutemisor.trim()+"F"+foliodte+"T"+codsii+".pdf"));
         PdfContentByte content = stamper.getOverContent(1);
         BaseFont bf=BaseFont.createFont(BaseFont.HELVETICA,BaseFont.CP1252,BaseFont.NOT_EMBEDDED);
         BaseFont bf2=BaseFont.createFont(BaseFont.HELVETICA_BOLD,BaseFont.CP1252,BaseFont.NOT_EMBEDDED);
@@ -432,11 +424,9 @@ if ("0".equals(folioref.getTextContent().trim())==false){
         
         
         
-      File filepdf = new File("ENV"+nombredte+".pdf");
-      byte[] arrayPDF = Files.readAllBytes(filepdf.toPath());
+    
         
         
-        return arrayPDF;
     }
     
     

@@ -22,8 +22,8 @@ public class FuncionesCAF {
     
    public boolean validaCAF(String pathcaf, String rutempresa, int codsii, int nrofolio) throws ParserConfigurationException, SAXException, IOException{   
         String[] arrayrutempresa = rutempresa.split("-"); 
-        String filepath =  pathcaf;
-	
+        String filepath = pathcaf+"F"+arrayrutempresa[0]+"T" + String.valueOf(codsii)+".xml";
+	System.out.print(pathcaf);
          DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	 DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 	 Document doc = docBuilder.parse(filepath);

@@ -64,11 +64,8 @@ public class SignENVDTE {
 
 
 
-    public void signENVDTE(String pathdte,String nombredte,String pathcertificado, String clave,byte[] arrayCert) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyStoreException, IOException, CertificateException, UnrecoverableKeyException, UnrecoverableEntryException, KeyException, ParserConfigurationException, SAXException, MarshalException, XMLSignatureException, TransformerConfigurationException, TransformerException{
+    public void signENVDTE(String pathdte,String nombredte,String pathcertificado, String clave) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyStoreException, IOException, CertificateException, UnrecoverableKeyException, UnrecoverableEntryException, KeyException, ParserConfigurationException, SAXException, MarshalException, XMLSignatureException, TransformerConfigurationException, TransformerException{
                
-        
-         OutputStream os = new FileOutputStream(pathcertificado); 
-         os.write(arrayCert);
         
         
         
@@ -122,7 +119,7 @@ public class SignENVDTE {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);
         Document doc = dbf.newDocumentBuilder().parse
-        (new FileInputStream("ENV"+nombredte+".xml"));
+        (new FileInputStream(pathdte+"ENV"+nombredte+".xml"));
         doc.setXmlStandalone(true);
         Node documento = doc.getElementsByTagName("SetDTE").item(0);
         Element eldocumento =(Element) documento;
@@ -148,7 +145,7 @@ public class SignENVDTE {
 
 // Output the resulting document.
 
-OutputStream os2 = new FileOutputStream("ENV"+nombredte+".xml");
+OutputStream os2 = new FileOutputStream(pathdte+"ENV"+nombredte+".xml");
 TransformerFactory tf = TransformerFactory.newInstance();
 Transformer trans = tf.newTransformer();
 trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");

@@ -1,5 +1,6 @@
 package com.appdte.sii.cl;
 
+import com.appdte.sii.utilidades.ConfigClass;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -38,7 +39,7 @@ public class UploadSii{
          
          
          
-         
+         ConfigClass objconfig = new ConfigClass();
          
         URL url = new URL("https://"+this.urlenvironment+"/cgi_dte/UPL/DTEUpload");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -49,7 +50,7 @@ public class UploadSii{
         conn.setRequestProperty("Cookie","TOKEN="+valortoken);
         
         
-        String archivo = pathdte+"ENV"+nombredte +".xml";
+        String archivo = objconfig.getPathdte()+"ENV"+nombredte +".xml";
         conn.setUseCaches(false);
         String cadena = "";
         String contenido = "";
@@ -117,6 +118,7 @@ if(fichero.delete()){
         
 }    
         */
+      System.out.print(targetString);
       return   readTrackId(targetString);
            }
        

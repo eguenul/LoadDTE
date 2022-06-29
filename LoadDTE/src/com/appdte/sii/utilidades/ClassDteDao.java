@@ -310,7 +310,7 @@ public void agregaDetalle(DetalleDteModel detalledte){
                 transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "1"); 
                             //luego guardo el documento    
                 DOMSource source = new DOMSource(this.doc);              
-                StreamResult result = new StreamResult(new File(nombredte+".xml"));
+                StreamResult result = new StreamResult(new File(pathdte+  nombredte+".xml"));
 		transformer.transform(source, result);                
 		
         

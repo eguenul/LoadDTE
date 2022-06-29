@@ -56,15 +56,12 @@ import org.xml.sax.SAXException;
 
 public class SignDTE {
     
-    public void signDTE(String pathdte,String nombredte,String pathcertificado, String clave, byte[] arrayCert) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyStoreException, IOException, CertificateException, UnrecoverableKeyException, UnrecoverableEntryException, KeyException, ParserConfigurationException, SAXException, MarshalException, XMLSignatureException, TransformerConfigurationException, TransformerException{
+    public void signDTE(String pathdte,String nombredte,String pathcertificado, String clave) throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, KeyStoreException, IOException, CertificateException, UnrecoverableKeyException, UnrecoverableEntryException, KeyException, ParserConfigurationException, SAXException, MarshalException, XMLSignatureException, TransformerConfigurationException, TransformerException{
                
         
         
         
-         OutputStream os = new FileOutputStream(pathcertificado); 
-         os.write(arrayCert);
-        
-        
+       
         
          /* CREO LOS ELEMENTOS DE FIRMA */     
             // Create a DOM XMLSignatureFactory that will be used to
@@ -123,7 +120,7 @@ public class SignDTE {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);
         Document doc = dbf.newDocumentBuilder().parse
-        (new FileInputStream(nombredte+".xml"));
+        (new FileInputStream(pathdte+nombredte+".xml"));
         
         Node documento = doc.getElementsByTagName("Documento").item(0);
         Element eldocumento =(Element) documento;
@@ -142,7 +139,7 @@ public class SignDTE {
         signature.sign(dsc);
 
 // Output the resulting document.
-OutputStream os2 = new FileOutputStream(nombredte+".xml");
+OutputStream os2 = new FileOutputStream(pathdte+nombredte+".xml");
 TransformerFactory tf = TransformerFactory.newInstance();
 Transformer trans = tf.newTransformer();
 trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");

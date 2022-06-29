@@ -3,29 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/DetalleCompra.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/funcionesws/ConsultaCesion.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/ICVVenta.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/getdte/GETDTE.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/json/DteJson.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/ConfigClass_1.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/getdte/getVentas.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/cl/SignToken.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/funcionesws/ConsultaDTE.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/ICVCompra.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/ICVVentaJSON.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/json/IdDteCesionjson.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/DetalleVenta.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/json/CaratulaJson.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/Venta.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/ClassDteDao.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/AppDTE.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/funcionesws/ConsultaAceptacion.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/json/IdDteJson.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/getdte/getCompras.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/models/DteModel.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/Compra.java</file>
-            <file>file:/home/esteban/NetBeansProjects/LoadDTE/src/com/appdte/sii/utilidades/ICVCompraJSON.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/test/SendDTE.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appdte/json/CaratulaJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/CaratulaJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/sii/PrintBoleta.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/sii/LibroBoleta.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/TotalPeriodoJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appdte/sii/utilidades/AppDTE.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/test/mainLibroBoleta.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/test/mainBoleta.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appdte/json/DetalleDteJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appdte/sii/utilidades/ClassDteDao.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/xml/LibroBoletaXML.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/SegmentoJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/sii/xmlBOLETA.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/PeriodoJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/LibroBoletaJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appdte/json/ResumenJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appdte/json/EmisorJson.java</file>
         </group>
     </open-files>
 </project-private>

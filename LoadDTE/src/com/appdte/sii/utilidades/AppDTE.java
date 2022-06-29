@@ -27,22 +27,17 @@ import appventas.movimientos.BlobDTE;
 import com.google.gson.Gson;
 import java.util.List;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 
 
 public class AppDTE {
     String environment;
-    String pathcaf;
-    public AppDTE(byte[] arrayCAF, String loginuser, String environment) throws FileNotFoundException, IOException{
+    
+    public AppDTE(String loginuser, String environment) throws FileNotFoundException, IOException{
         
      this.environment = environment;
-     File file = new File(loginuser+ "CAF"+".xml"); 
-     OutputStream os  = new FileOutputStream(file); 
-     os.write(arrayCAF);
-     this.pathcaf = loginuser+ "CAF"+".xml";
+     
+     
      
     }
             
@@ -52,14 +47,16 @@ public class AppDTE {
     
     @SuppressWarnings("empty-statement")
     
-    public  Object[] sendDTE(String stringDTE,String certificado,String clave,String rutEnvia, boolean blReferencia, byte[] arrayCert) throws TransformerException, ParserConfigurationException, SAXException, IOException, Exception{
+    public void sendDTE(String stringDTE,String certificado,String clave,String rutEnvia, boolean blReferencia) throws TransformerException, ParserConfigurationException, SAXException, IOException, Exception{
 
-    
+   ConfigClass objconfig = new ConfigClass();
+   
   
-   String pathdata = "";
+   String pathdata = objconfig.getPathdata();
+   String pathcaf = objconfig.getPathcaf();
   
    /* CARGO LOS PARAMETROS DE CONFIGURACION */
-   String pathdte = "";
+   String pathdte = objconfig.getPathdte();
    String urlenvironment = this.environment;
    /* ingreso el DTE en formato JSON */
              
@@ -103,10 +100,10 @@ public class AppDTE {
     FuncionesCAF objFuncionCAF = new FuncionesCAF();
     
     /* VALIDAMOS CAF */
-    if(objFuncionCAF.validaCAF(pathcaf, objemisor.getRutemisor(),Integer.parseInt(iddoc.getTipoDTE()), Integer.parseInt(iddoc.getNumDTE()))==false){
-    
+    if(objFuncionCAF.validaCAF(objconfig.getPathcaf(), objemisor.getRutemisor(),Integer.parseInt(iddoc.getTipoDTE()), Integer.parseInt(iddoc.getNumDTE()))==false){
+    /*
         return null;
-        
+      */
     }
     
     
@@ -171,7 +168,7 @@ public class AppDTE {
      List<DetalleDteJson> detalle = objdtejson.getDetalleDteJson();
   
     
-   Timbre objTimbre = new Timbre("",nombredte,pathdata,this.pathcaf);
+   Timbre objTimbre = new Timbre(objconfig.getPathdte(),nombredte,pathdata,pathcaf);
    String auxDescripcion;
 for (DetalleDteJson i :  detalle){     
   if(i.getNrolinea()==1){  
@@ -211,28 +208,22 @@ objReferenciaModel.setTpoDocRef(referencia.getTpoDocRef());
 obj.agregaRegerencia(objReferenciaModel,blReferencia);
     
 auxDescripcion = objTimbre.getItem1();
-obj.guardarDocumento(nombredte,pathdte);
+obj.guardarDocumento(nombredte,objconfig.getPathdte());
 objTimbre.creaTimbre(objdte, auxDescripcion,rutemisor);
   
     
 /* preparo el DTE para firmar */
 SignDTE objFirma = new SignDTE();
-objFirma.signDTE("",nombredte,certificado,clave, arrayCert);
+objFirma.signDTE(objconfig.getPathdte(),nombredte,certificado,clave);
    
     /* ahora envuelvo el DTE en un sobre electrónico */
    
 EnvioDTE objenvio = new EnvioDTE(this.environment);
-objenvio.generaEnvio(objdte,nombredte,pathdte,rutEnvia);
+objenvio.generaEnvio(objdte,nombredte,objconfig.getPathdte(),rutEnvia);
    
 SignENVDTE objFirmaENV = new SignENVDTE();
-objFirmaENV.signENVDTE("",nombredte,certificado,clave,arrayCert);
+objFirmaENV.signENVDTE(objconfig.getPathdte(),nombredte,certificado,clave);
     
-/*
-BlobDTE objblob = new BlobDTE();
-    
-objblob.registrarXML(idmovimiento,"ENVDTE"+rutemisor+"F"+iddoc.getNumDTE()+"T"+iddoc.getTipoDTE()+".xml");
-*/
-
 
  /* OBTENGO LA SEMILLA PARA AUTENTIFICARME AL SII   */ 
  
@@ -250,18 +241,16 @@ String valorsemilla =  objsemilla.getSeed(urlenvironment);
 
 
  String valortrackid = objupload.uploadSii(valortoken,"",nombredte,objdte.getRutemisor(),rutEnvia);
-
+ System.out.print(valortrackid);
     
- 
+ /*
  getBytesDTE objByte = new getBytesDTE();
  Object[] arrayObjetos = new Object[2];
 
  arrayObjetos[0] = valortrackid;
  arrayObjetos[1] = objByte.getBytesArray(nombredte);
-    
- return arrayObjetos;
-    
- 
+   */ 
+
  
  
 }

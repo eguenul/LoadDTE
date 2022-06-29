@@ -267,7 +267,7 @@ transformer.transform(source, result);
     
   public void leerCaf(String auxrutemisor, String tipodocumento,String pathcaf) throws ParserConfigurationException, SAXException, IOException{
         
-        String filepath2 = pathcaf+"F"+auxrutemisor+"T"+tipodocumento+".xml";
+        String filepath2 = pathcaf +"F"+auxrutemisor+"T"+tipodocumento+".xml";
 	
         DocumentBuilderFactory docFactory2 = DocumentBuilderFactory.newInstance();
 	DocumentBuilder docBuilder2 = docFactory2.newDocumentBuilder();

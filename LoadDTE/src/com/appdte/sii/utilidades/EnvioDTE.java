@@ -41,7 +41,7 @@ public class EnvioDTE {
     
 
    public void generaEnvio(DteModel objdte,String nombredte,String pathdte,String rutusuario) throws ParserConfigurationException, FileNotFoundException, IOException, SAXException, TransformerConfigurationException, TransformerException{
-       
+       ConfigClass objconfig = new ConfigClass();
        	DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
         this.doc = docBuilder.newDocument();
@@ -158,15 +158,15 @@ public class EnvioDTE {
         /* agrego el dte ya firmado */
            String cadena;
          String stringnode = "";
-           String archivo = nombredte+".xml";
+           String archivo = objconfig.getPathdte()+ nombredte+".xml";
          FileReader f = new FileReader(archivo);
        try (BufferedReader b = new BufferedReader(f)) {
            while((cadena = b.readLine())!=null) {
              stringnode = stringnode + cadena + "\n";
            }}
           
-    File fichero = new File(pathdte+nombredte+".xml");
-    fichero.delete();
+    File fichero = new File(objconfig.getPathdte()+nombredte+".xml");
+    
           
     
     Node fragmentNode = docBuilder.parse(new InputSource(new StringReader(stringnode))).getDocumentElement();
@@ -184,7 +184,7 @@ public class EnvioDTE {
          DOMSource source = new DOMSource(this.doc);
         
 	 StreamResult result;
-         result = new StreamResult(new File("ENV"+nombredte+".xml"));
+         result = new StreamResult(new File(objconfig.getPathdte()+"ENV"+nombredte+".xml"));
 	
    
          
