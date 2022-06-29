@@ -9,14 +9,18 @@ package com.appboleta.json;
  *
  * @author esteban
  */
-public class LibroBoletaJson {
-private EnvioLibroJson EnvioLibro;
+public class MainLibroJson {
+ LibroBoletaJson LibroBoleta;
 
-    public EnvioLibroJson getEnvioLibro() {
-        return EnvioLibro;
+    public LibroBoletaJson getLibroBoleta() {
+        return LibroBoleta;
     }
 
-    public void setEnvioLibro(EnvioLibroJson EnvioLibro) {
-        this.EnvioLibro = EnvioLibro;
+    public void setLibroBoleta(LibroBoletaJson LibroBoleta) {
+        this.LibroBoleta = LibroBoleta;
     }
+ 
+ 
+    
+    
 }

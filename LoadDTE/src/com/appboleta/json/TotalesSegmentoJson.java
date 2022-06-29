@@ -9,11 +9,11 @@ package com.appboleta.json;
  *
  * @author esteban
  */
-public class TotalPeriodoJson {
-    
+public class TotalesSegmentoJson {
    private String TpoDoc;
    private String TotAnulado;
-   private TotalesServicio2Json totalesServicio;
+   
+   private TotalesServicio1Json totalesServicio;
 
     public String getTpoDoc() {
         return TpoDoc;
@@ -30,16 +30,20 @@ public class TotalPeriodoJson {
     public void setTotAnulado(String TotAnulado) {
         this.TotAnulado = TotAnulado;
     }
-       
-  
 
-    public TotalesServicio2Json getTotalesServicio() {
+    public TotalesServicio1Json getTotalesServicio() {
         return totalesServicio;
     }
 
-    public void setTotalesServicio(TotalesServicio2Json totalesServicio) {
+    public void setTotalesServicio(TotalesServicio1Json totalesServicio) {
         this.totalesServicio = totalesServicio;
     }
+   
+   
+    
+    
+    
+    
     
     
 }

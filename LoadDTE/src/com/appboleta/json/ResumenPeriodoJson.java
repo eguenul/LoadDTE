@@ -9,6 +9,6 @@ package com.appboleta.json;
  *
  * @author esteban
  */
-public class SegmentoJson {
+public class ResumenPeriodoJson {
     
 }

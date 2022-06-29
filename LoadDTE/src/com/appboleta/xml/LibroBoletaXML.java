@@ -5,8 +5,17 @@
  */
 package com.appboleta.xml;
 
+import com.appboleta.json.EnvioLibroJson;
+import com.appboleta.json.CaratulaJson;
+import com.appboleta.json.LibroBoletaJson;
+import com.appboleta.json.MainLibroJson;
+import com.google.gson.Gson;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -28,12 +37,28 @@ import org.xml.sax.SAXException;
 public class LibroBoletaXML {
  
      private Document doc;
-    private Element documento;
-
+  
     
     
-public void generaXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+public void generaXML(String stringLibroJson ) throws ParserConfigurationException, TransformerException, SAXException, IOException{
 
+    
+    InputStream isjson = new ByteArrayInputStream(stringLibroJson.getBytes("UTF-8")); 
+    BufferedReader br1 = new BufferedReader(new InputStreamReader(isjson));
+  
+  
+    Gson gson = new Gson(); 
+    MainLibroJson objmainLibroJson = gson.fromJson(br1, MainLibroJson.class);
+    LibroBoletaJson objLibroBoletaJson = objmainLibroJson.getLibroBoleta();
+    EnvioLibroJson objEnvioLibroJson = objLibroBoletaJson.getEnvioLibro();
+    CaratulaJson objCaratulaJson = objEnvioLibroJson.getCaratula();
+    
+    
+    
+    
+    
+    
+    
                 
                 DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -55,11 +80,16 @@ public void generaXML() throws ParserConfigurationException, TransformerExceptio
              
                 libroboleta.appendChild(EnvioLibro);
                
+                
+             
+                
+                
                   //inicio de encabezado de documento
 		Element caratula = this.doc.createElement("Caratula");
 		
                 
                 Element RutEmisorLibro = this.doc.createElement("RutEmisorLibro");
+            
                 caratula.appendChild(RutEmisorLibro);
                 
                 
@@ -154,35 +184,185 @@ public void generaXML() throws ParserConfigurationException, TransformerExceptio
                Element TotTicket = this.doc.createElement("TotTicket");
                TotalesServicio.appendChild(TotTicket);
                
-                /*
-                <ResumenSegmento>
-      <TotalesSegmento>
-        <TpoDoc>39</TpoDoc>
-        <TotAnulado>1234</TotAnulado>
-        <TotalesServicio>
-          <TpoServ>1</TpoServ>
-          <PeriodoDevengo>1999-05</PeriodoDevengo>
-          <TotDoc>1234</TotDoc>
-          <TotMntExe>33</TotMntExe>
-          <TotMntTotal>33</TotMntTotal>
-          <TotMntNoFact>1234</TotMntNoFact>
-          <TotMntPeriodo>1234</TotMntPeriodo>
-          <TotSaldoAnt>1234</TotSaldoAnt>
-          <TotVlrPagar>1234</TotVlrPagar>
-          <TotTicket>33</TotTicket>
-        </TotalesServicio>
-      </TotalesSegmento>
-    </ResumenSegmento>
-                
-                
-                */
-                
-                
-                
-                
+              resumenPeriodo(EnvioLibro);
+               
+              
+              addDetalle(EnvioLibro);
+               
+               
+               
                 guardarDocumento();
 }               
     
+private void resumenPeriodo(Element EnvioLibro){
+     Element ResumenPeriodo = this.doc.createElement("ResumenPeriodo");
+     EnvioLibro.appendChild(ResumenPeriodo);
+    
+    Element TotalesPeriodo = this.doc.createElement("TotalesPeriodo");
+    ResumenPeriodo.appendChild(TotalesPeriodo);
+    
+    Element TpoDoc = this.doc.createElement("TpoDoc");
+    TotalesPeriodo.appendChild(TpoDoc);
+    
+    Element TotAnulado = this.doc.createElement("TotAnulado");
+    TotalesPeriodo.appendChild(TotAnulado);
+    
+     
+     Element TotalesServicio = this.doc.createElement("TotalesServicio");
+     TotalesPeriodo.appendChild(TotalesServicio);
+     
+    Element TpoServ = this.doc.createElement("TpoServ");
+    TotalesServicio.appendChild(TpoServ);
+    
+    
+    Element PeriodoDevengado = this.doc.createElement("PeriodoDevengado");
+    TotalesServicio.appendChild(PeriodoDevengado);
+    
+    
+    Element TotDoc = this.doc.createElement("TotDoc");
+    TotalesServicio.appendChild(TotDoc);
+    
+    Element TotMntExe = this.doc.createElement("TotMntExe");
+    TotalesServicio.appendChild(TotMntExe);
+    
+    Element TotMntNeto = this.doc.createElement("TotMntNeto");
+    TotalesServicio.appendChild(TotMntNeto);
+    
+    
+    Element TasaIVA = this.doc.createElement("TasaIVA");
+    TotalesServicio.appendChild(TasaIVA);
+    
+    
+    Element TotMntIVA = this.doc.createElement("TotMntIVA");
+    TotalesServicio.appendChild(TotMntIVA);
+    
+    
+    Element TotMntTotal = this.doc.createElement("TotMntTotal");
+    TotalesServicio.appendChild(TotMntTotal);
+    
+    Element TotMntNoFact = this.doc.createElement("TotMntNoFact");
+    TotalesServicio.appendChild(TotMntNoFact);
+   
+   Element TotMntPeriodo = this.doc.createElement("TotMntPeriodo");
+   TotalesServicio.appendChild(TotMntPeriodo);
+   
+   
+   Element TotSaldoAnt = this.doc.createElement("TotSaldoAnt");
+   TotalesServicio.appendChild(TotSaldoAnt);
+   
+   
+   Element TotVlrPagar = this.doc.createElement("TotVlrPagar");
+   TotalesServicio.appendChild(TotVlrPagar);
+   
+   Element TotTicket = this.doc.createElement("TotTicket");
+   TotalesServicio.appendChild(TotTicket);
+   
+}
+
+
+
+private void addDetalle(Element EnvioLibro){
+    
+      Element Detalle = this.doc.createElement("Detalle");
+      EnvioLibro.appendChild(Detalle);
+      
+      Element TpoDoc = this.doc.createElement("TpoDoc");
+      Detalle.appendChild(TpoDoc);
+      
+      Element FolioDoc = this.doc.createElement("FolioDoc");
+      Detalle.appendChild(FolioDoc);
+      
+      Element Anulado = this.doc.createElement("Anulado");
+      Detalle.appendChild(Anulado);
+      
+      Element TpoServ = this.doc.createElement("TpoServ");
+      Detalle.appendChild(TpoServ);
+      
+      Element FchEmiDoc = this.doc.createElement("FchEmiDoc");
+      Detalle.appendChild(FchEmiDoc);
+      
+      Element FchVencDoc = this.doc.createElement("FchVencDoc");
+      Detalle.appendChild(FchVencDoc);
+      
+      Element PeriodoDesde = this.doc.createElement("PeriodoDesde");
+      Detalle.appendChild(PeriodoDesde);
+      
+      
+      Element PeriodoHasta = this.doc.createElement("PeriodoHasta");
+      Detalle.appendChild(PeriodoHasta);
+      
+      
+      Element CdgSIISucur = this.doc.createElement("CdgSIISucur");
+      Detalle.appendChild(CdgSIISucur);
+      
+      Element RUTCliente = this.doc.createElement("RUTCliente");
+      Detalle.appendChild(RUTCliente);
+      
+      
+      Element CodIntCli = this.doc.createElement("CodIntCli");
+      Detalle.appendChild(CodIntCli);
+      
+      Element MntExe = this.doc.createElement("MntExe");
+      Detalle.appendChild(MntExe);
+      
+      
+      Element MntTotal = this.doc.createElement("MntTotal");
+      Detalle.appendChild(MntTotal);
+     
+      
+      Element MntNoFact = this.doc.createElement("MntNoFact");
+      Detalle.appendChild(MntNoFact);
+      
+      Element MntPeriodo = this.doc.createElement("MntPeriodo");
+      Detalle.appendChild(MntPeriodo);
+      
+      
+      Element SaldoAnt = this.doc.createElement("SaldoAnt");
+      Detalle.appendChild(SaldoAnt);
+      
+      Element VlrPagar = this.doc.createElement("VlrPagar");
+      Detalle.appendChild(VlrPagar);
+      
+      Element TotTicketBoleta = this.doc.createElement("TotTicketBoleta");
+      Detalle.appendChild(TotTicketBoleta);
+      
+      /*
+      
+        <TpoDoc>39</TpoDoc>
+      <FolioDoc>745</FolioDoc>
+      <Anulado>A</Anulado>
+      <TpoServ>1</TpoServ>
+      <FchEmiDoc>2012-12-13</FchEmiDoc>
+      <FchVencDoc>2012-12-13</FchVencDoc>
+      <PeriodoDesde>2012-12-13</PeriodoDesde>
+      <PeriodoHasta>2012-12-13</PeriodoHasta>
+      <CdgSIISucur>745</CdgSIISucur>
+      <RUTCliente>str1234</RUTCliente>
+      <CodIntCli>str1234</CodIntCli>
+      <MntExe>33</MntExe>
+      <MntTotal>33</MntTotal>
+      <MntNoFact>1234</MntNoFact>
+      <MntPeriodo>1234</MntPeriodo>
+      <SaldoAnt>1234</SaldoAnt>
+      <VlrPagar>1234</VlrPagar>
+      <TotTicketBoleta>33</TotTicketBoleta>
+      
+      */
+      
+      
+      
+      
+      
+      
+    
+}
+
+
+
+
+
+
+
     public void guardarDocumento() throws TransformerException, ParserConfigurationException, SAXException, IOException{
         
         
