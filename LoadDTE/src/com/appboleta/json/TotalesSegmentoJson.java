@@ -13,7 +13,7 @@ public class TotalesSegmentoJson {
    private String TpoDoc;
    private String TotAnulado;
    
-   private TotalesServicio1Json totalesServicio;
+   private TotalesServicio1Json TotalesServicio;
 
     public String getTpoDoc() {
         return TpoDoc;
@@ -32,11 +32,11 @@ public class TotalesSegmentoJson {
     }
 
     public TotalesServicio1Json getTotalesServicio() {
-        return totalesServicio;
+        return TotalesServicio;
     }
 
     public void setTotalesServicio(TotalesServicio1Json totalesServicio) {
-        this.totalesServicio = totalesServicio;
+        this.TotalesServicio = totalesServicio;
     }
    
    

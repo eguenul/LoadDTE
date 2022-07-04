@@ -13,7 +13,7 @@ public class TotalPeriodoJson {
     
    private String TpoDoc;
    private String TotAnulado;
-   private TotalesServicio2Json totalesServicio;
+   private TotalesServicio2Json TotalesServicio;
 
     public String getTpoDoc() {
         return TpoDoc;
@@ -34,11 +34,11 @@ public class TotalPeriodoJson {
   
 
     public TotalesServicio2Json getTotalesServicio() {
-        return totalesServicio;
+        return TotalesServicio;
     }
 
-    public void setTotalesServicio(TotalesServicio2Json totalesServicio) {
-        this.totalesServicio = totalesServicio;
+    public void setTotalesServicio(TotalesServicio2Json TotalesServicio) {
+        this.TotalesServicio = TotalesServicio;
     }
     
     

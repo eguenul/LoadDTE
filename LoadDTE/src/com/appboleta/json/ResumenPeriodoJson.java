@@ -10,5 +10,15 @@ package com.appboleta.json;
  * @author esteban
  */
 public class ResumenPeriodoJson {
+ private TotalPeriodoJson TotalesPeriodo;   
+
+    public TotalPeriodoJson getTotalesPeriodo() {
+        return TotalesPeriodo;
+    }
+
+    public void setTotalesPeriodo(TotalPeriodoJson TotalesPeriodo) {
+        this.TotalesPeriodo = TotalesPeriodo;
+    }
+
     
 }

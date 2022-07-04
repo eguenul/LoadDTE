@@ -5,14 +5,26 @@
  */
 package com.appboleta.json;
 
-import java.util.List;
-
 /**
  *
  * @author esteban
  */
 public class EnvioLibroJson {
    private CaratulaJson Caratula;
+   private ResumenSegmentoJson ResumenSegmento;
+   private ResumenPeriodoJson ResumenPeriodo;
+   private DetalleJson Detalle;
+
+    public DetalleJson getDetalle() {
+        return Detalle;
+    }
+
+    public void setDetalle(DetalleJson Detalle) {
+        this.Detalle = Detalle;
+    }
+   
+   
+   
    /*
   private List<DetalleJson> detalle; 
 */
@@ -23,6 +35,14 @@ public class EnvioLibroJson {
     public void setCaratula(CaratulaJson Caratula) {
         this.Caratula = Caratula;
     }
+    
+    
+    
+   
+    
+    
+    
+    
 /*
     public List<DetalleJson> getDetalle() {
         return detalle;
@@ -33,6 +53,22 @@ public class EnvioLibroJson {
     }
     
  */  
+
+    public ResumenPeriodoJson getResumenPeriodo() {
+        return ResumenPeriodo;
+    }
+
+    public void setResumenPeriodo(ResumenPeriodoJson ResumenPeriodo) {
+        this.ResumenPeriodo = ResumenPeriodo;
+    }
+
+    public ResumenSegmentoJson getResumenSegmento() {
+        return ResumenSegmento;
+    }
+
+    public void setResumenSegmento(ResumenSegmentoJson ResumenSegmento) {
+        this.ResumenSegmento = ResumenSegmento;
+    }
      
     
     

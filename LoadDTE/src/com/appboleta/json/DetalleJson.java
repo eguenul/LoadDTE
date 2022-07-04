@@ -28,7 +28,7 @@ public class DetalleJson {
     private String SaldoAnt;
     private String VlrPagar;
     private String TotTicketBoleta;
-
+    private String TpoDoc;
     public String getFolioDoc() {
         return FolioDoc;
     }
@@ -163,6 +163,14 @@ public class DetalleJson {
 
     public void setTotTicketBoleta(String TotTicketBoleta) {
         this.TotTicketBoleta = TotTicketBoleta;
+    }
+
+    public String getTpoDoc() {
+        return TpoDoc;
+    }
+
+    public void setTpoDoc(String TpoDoc) {
+        this.TpoDoc = TpoDoc;
     }
     
     
