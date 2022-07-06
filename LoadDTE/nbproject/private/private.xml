@@ -13,11 +13,16 @@
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appdte/json/DteJson.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/TotalesSegmentoJson.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/test/mainBoleta.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/sii/UploadConsumo.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/TotalesServicio2Json.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/ResumenPeriodoJson.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/xml/LibroBoletaXML.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/sii/EnvioBOLETA.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/EnvioLibroJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/sii/EnvioConsumo.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/ResumenSegmentoJson.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/sii/ConsumoFolio.java</file>
+            <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/sii/xmlBOLETA.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/LibroBoletaJson.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appdte/models/DteModel.java</file>
             <file>file:/home/esteban/proyectos_web/loaddte/LoadDTE/LoadDTE/src/com/appboleta/json/MainLibroJson.java</file>
